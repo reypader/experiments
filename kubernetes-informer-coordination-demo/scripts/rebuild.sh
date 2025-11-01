@@ -5,12 +5,12 @@ echo "=== Quick Rebuild and Restart ==="
 eval $(minikube docker-env)
 
 # Build new image
-./gradlew jibDockerBuild --image=kubernetes-informer-demo:latest -Djib.dockerClient.executable=/usr/local/bin/docker
+./gradlew jibDockerBuild --image=kubernetes-informer-coordination-demo:latest -Djib.dockerClient.executable=/usr/local/bin/docker
 
 # Restart pods to pick up new image
-kubectl rollout restart deployment/kubernetes-informer-demo
-kubectl rollout status deployment/kubernetes-informer-demo
+kubectl rollout restart deployment/kubernetes-informer-coordination-demo
+kubectl rollout status deployment/kubernetes-informer-coordination-demo
 
 echo ""
 echo "=== Pods Restarted with New Image ==="
-kubectl get pods -l app=kubernetes-informer-demo
+kubectl get pods -l app=kubernetes-informer-coordination-demo

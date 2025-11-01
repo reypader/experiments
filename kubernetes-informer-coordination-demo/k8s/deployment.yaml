@@ -2,24 +2,24 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: kubernetes-informer-demo
+  name: kubernetes-informer-coordination-demo
   namespace: default
   labels:
-    app: kubernetes-informer-demo
+    app: kubernetes-informer-coordination-demo
 spec:
   replicas: 2  # Deploy multiple instances to see cluster membership
   selector:
     matchLabels:
-      app: kubernetes-informer-demo
+      app: kubernetes-informer-coordination-demo
   template:
     metadata:
       labels:
-        app: kubernetes-informer-demo
+        app: kubernetes-informer-coordination-demo
     spec:
-      serviceAccountName: kubernetes-informer-demo
+      serviceAccountName: kubernetes-informer-coordination-demo
       containers:
         - name: app
-          image: kubernetes-informer-demo:latest
+          image: kubernetes-informer-coordination-demo:latest
           imagePullPolicy: Never  # For Minikube local images
           env:
             - name: POD_NAME

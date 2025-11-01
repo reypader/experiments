@@ -1,8 +1,8 @@
 #!/bin/bash
 set -e
 
-DEPLOYMENT_NAME="kubernetes-informer-demo"
-LABEL="app=kubernetes-informer-demo"
+DEPLOYMENT_NAME="kubernetes-informer-coordination-demo"
+LABEL="app=kubernetes-informer-coordination-demo"
 
 # Get current replica count
 get_current_replicas() {

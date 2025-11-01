@@ -44,7 +44,7 @@ jib {
     }
 
     to {
-        image = "kubernetes-informer-demo"
+        image = "kubernetes-informer-coordination-demo"
         tags = setOf("latest", version.toString())
     }
 
@@ -53,8 +53,6 @@ jib {
         jvmFlags =
             listOf(
                 "-XX:+UseContainerSupport",
-                "-XX:MaxRAMPercentage=75.0",
-                "-Djava.security.egd=file:/dev/./urandom",
             )
         ports = emptyList()
 
