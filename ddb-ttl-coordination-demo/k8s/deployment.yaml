@@ -1,0 +1,53 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ddb-ttl-coordination-demo
+  namespace: default
+  labels:
+    app: ddb-ttl-coordination-demo
+spec:
+  replicas: 2  # Deploy multiple instances to see cluster membership
+  selector:
+    matchLabels:
+      app: ddb-ttl-coordination-demo
+  template:
+    metadata:
+      labels:
+        app: ddb-ttl-coordination-demo
+    spec:
+      containers:
+        - name: app
+          image: ddb-ttl-coordination-demo:latest
+          imagePullPolicy: Never  # For Minikube local images
+          env:
+            - name: POD_NAME
+              valueFrom:
+                fieldRef:
+                  fieldPath: metadata.name
+            - name: NAMESPACE
+              valueFrom:
+                fieldRef:
+                  fieldPath: metadata.namespace
+            - name: AWS_ACCESS_KEY_ID
+              valueFrom:
+                secretKeyRef:
+                  name: aws-credentials
+                  key: AWS_ACCESS_KEY_ID
+            - name: AWS_SECRET_ACCESS_KEY
+              valueFrom:
+                secretKeyRef:
+                  name: aws-credentials
+                  key: AWS_SECRET_ACCESS_KEY
+            - name: AWS_REGION
+              valueFrom:
+                secretKeyRef:
+                  name: aws-credentials
+                  key: AWS_REGION
+          resources:
+            requests:
+              memory: "256Mi"
+              cpu: "100m"
+            limits:
+              memory: "512Mi"
+              cpu: "500m"

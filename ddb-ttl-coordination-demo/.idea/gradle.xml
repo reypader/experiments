@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="GradleSettings">
+    <option name="linkedExternalProjectsSettings">
+      <GradleProjectSettings>
+        <compositeConfiguration>
+          <compositeBuild compositeDefinitionSource="SCRIPT">
+            <builds>
+              <build path="$PROJECT_DIR$/../../kotlin-event-sourcing" name="kotlin-event-sourcing">
+                <projects>
+                  <project path="$PROJECT_DIR$/../../kotlin-event-sourcing" />
+                  <project path="$PROJECT_DIR$/../../kotlin-event-sourcing/coordination-aws" />
+                  <project path="$PROJECT_DIR$/../../kotlin-event-sourcing/coordination-kubernetes" />
+                  <project path="$PROJECT_DIR$/../../kotlin-event-sourcing/core" />
+                  <project path="$PROJECT_DIR$/../../kotlin-event-sourcing/repository-relational" />
+                </projects>
+              </build>
+            </builds>
+          </compositeBuild>
+        </compositeConfiguration>
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="gradleHome" value="" />
+        <option name="modules">
+          <set>
+            <option value="$PROJECT_DIR$" />
+            <option value="$PROJECT_DIR$/../../kotlin-event-sourcing" />
+            <option value="$PROJECT_DIR$/../../kotlin-event-sourcing/coordination-aws" />
+            <option value="$PROJECT_DIR$/../../kotlin-event-sourcing/coordination-kubernetes" />
+            <option value="$PROJECT_DIR$/../../kotlin-event-sourcing/core" />
+            <option value="$PROJECT_DIR$/../../kotlin-event-sourcing/repository-relational" />
+          </set>
+        </option>
+      </GradleProjectSettings>
+    </option>
+  </component>
+</project>
