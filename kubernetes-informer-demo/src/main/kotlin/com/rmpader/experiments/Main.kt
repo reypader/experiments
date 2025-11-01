@@ -2,12 +2,13 @@ package com.rmpader.experiments
 
 import com.rmpader.eventsourcing.coordination.AggregateCoordinator.AggregateLocation
 import com.rmpader.eventsourcing.coordination.kubernetes.KubernetesAggregateCoordinator
+import io.kubernetes.client.util.Config
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.runBlocking
 import kotlinx.coroutines.slf4j.MDCContext
 import org.slf4j.LoggerFactory
 import org.slf4j.MDC
-import java.util.*
+import java.util.UUID
 import kotlin.time.Duration.Companion.milliseconds
 import kotlin.time.Duration.Companion.minutes
 
@@ -18,7 +19,7 @@ fun main() {
     MDC.put("node_id", nodeId)
 
     val aggregateId = UUID.randomUUID().toString()
-    val runDurationMinutes = System.getenv("RUN_DURATION_MINUTES")?.toIntOrNull() ?: 60
+    val runDurationMinutes = System.getenv("RUN_DURATION_MINUTES")?.toIntOrNull() ?: 10
     val checkIntervalMillis = System.getenv("CHECK_INTERVAL_MILLIS")?.toLongOrNull() ?: 10L
 
     logger.info("========== [$nodeId] JOINING ==========")
@@ -29,9 +30,7 @@ fun main() {
     runBlocking(MDCContext()) {
         val coordinator =
             KubernetesAggregateCoordinator
-                .builder()
-                .labelSelector("app=kubernetes-informer-demo")
-                .nodeId(nodeId)
+                .builder("app=kubernetes-informer-demo", nodeId, Config.defaultClient())
                 .namespace("default")
                 .build()
 

@@ -12,14 +12,11 @@ repositories {
 }
 
 dependencies {
-    // Coordination library
     implementation("com.rmpader:coordination-kubernetes:1.0-SNAPSHOT")
-
-    // Logging
     implementation("ch.qos.logback:logback-classic:1.5.16")
     implementation("org.slf4j:slf4j-api:2.0.16")
-    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-slf4j:1.10.2")  // Add this
-
+    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-slf4j:1.10.2")
+    implementation("io.kubernetes:client-java:24.0.0")
     testImplementation(kotlin("test"))
 }
 
