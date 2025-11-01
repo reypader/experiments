@@ -6,7 +6,7 @@
     </appender>
 
     <logger name="io.kubernetes.client" level="INFO"/>
-    <logger name="com.rmpader" level="DEBUG"/>
+    <logger name="com.rmpader" level="INFO"/>
 
     <root level="INFO">
         <appender-ref ref="STDOUT"/>
